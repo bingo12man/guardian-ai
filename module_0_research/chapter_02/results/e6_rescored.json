@@ -1,0 +1,1906 @@
+{
+  "experiment": "E6",
+  "model": "llama3.2:3b",
+  "training_failure": {
+    "question": "How many percentage points greater was revenue growth (20%) than cost growth (8%)?",
+    "agent_answer": "12",
+    "diagnosis": "Correct numerical difference, but the answer omitted the percentage-point unit."
+  },
+  "lesson_provenance": "Fixed reviewed lessons derived from an observed E5 failure.",
+  "lessons": {
+    "no_memory": [],
+    "generic": [
+      "Verify the evidence carefully and provide a complete, accurate answer."
+    ],
+    "targeted": [
+      "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+    ]
+  },
+  "evaluation": {
+    "records": [
+      {
+        "task_id": "missing_profit",
+        "repeat": 1,
+        "condition": "no_memory",
+        "kind": "missing",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Not specified in the retrieved documents."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 1,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-23% (new-customer growth is lower than churn growth)"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 2,
+        "condition": "targeted",
+        "kind": "missing",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Not enough information to calculate exact net profit amount. Available data only shows percentage increase in campaign costs (7%)."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 1,
+        "condition": "no_memory",
+        "kind": "summary",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 0,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-6.0 (percentage points)"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 1,
+        "condition": "no_memory",
+        "kind": "strategy",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 2,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved document only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 1,
+        "condition": "generic",
+        "kind": "summary",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 0,
+        "condition": "generic",
+        "kind": "summary",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 0,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved document only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 0,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved evidence only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 1,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-23 percentage points"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 0,
+        "condition": "targeted",
+        "kind": "summary",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 1,
+        "condition": "generic",
+        "kind": "strategy",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 2,
+        "condition": "no_memory",
+        "kind": "summary",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 1,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "In percentage points, reach growth exceeded cost growth by 11 points (-7% + 18% = 11%)."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_unit"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_unit"
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 0,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-23 percentage points"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 0,
+        "condition": "no_memory",
+        "kind": "strategy",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 1,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "As calculated from the retrieved documents, campaign reach growth exceeded cost growth by 11 percentage points (18% - 7% = 11%)."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 2,
+        "condition": "targeted",
+        "kind": "strategy",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 0,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved document only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 0,
+        "condition": "no_memory",
+        "kind": "missing",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Not specified in the retrieved documents."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 1,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-6.0 (percentage points)"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 1,
+        "condition": "targeted",
+        "kind": "missing",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Not enough information to calculate exact net profit amount. Available data only shows percentage increase in campaign costs (7%)."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 2,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-23% (new-customer growth is lower than churn growth)"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 0,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "In percentage points, reach growth exceeded cost growth by 11 points (-7% + 18% = 11%)."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_unit"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_unit"
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 2,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-6.0 (percentage points)"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 0,
+        "condition": "generic",
+        "kind": "strategy",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 0,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-23% (new-customer growth is lower than churn growth)"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 2,
+        "condition": "targeted",
+        "kind": "summary",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 2,
+        "condition": "generic",
+        "kind": "strategy",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "customers_difference",
+        "repeat": 2,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "customers.txt"
+          ],
+          "retrieved": {
+            "customers.txt": "New customers increased by 23%."
+          },
+          "answer": "-23 percentage points"
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 1,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved document only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 0,
+        "condition": "targeted",
+        "kind": "missing",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Not enough information to calculate exact net profit amount. Available data only shows percentage increase in campaign costs (7%)."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 1,
+        "condition": "targeted",
+        "kind": "summary",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 1,
+        "condition": "targeted",
+        "kind": "strategy",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 1,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved document only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 2,
+        "condition": "no_memory",
+        "kind": "missing",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Not specified in the retrieved documents."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 2,
+        "condition": "no_memory",
+        "kind": "strategy",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 0,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "As calculated from the retrieved evidence, campaign reach growth exceeded cost growth by 11 percentage points (18% - 7% = 11%)."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 0,
+        "condition": "no_memory",
+        "kind": "summary",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 0,
+        "condition": "generic",
+        "kind": "missing",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "No information available to determine the exact net profit amount. The retrieved evidence only mentions a 7% increase in campaign costs, but does not provide information on revenue or net profit."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 1,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "As calculated from the retrieved evidence, campaign reach growth exceeded cost growth by 11 percentage points (18% - 7% = 11%)."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_summary",
+        "repeat": 2,
+        "condition": "generic",
+        "kind": "summary",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "Campaign reach increased by 18% and campaign costs increased by 7%."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 2,
+        "condition": "generic",
+        "kind": "missing",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "No information available to determine the exact net profit amount. The retrieved evidence only mentions a 7% increase in campaign costs, but does not provide information on revenue or net profit."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 2,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "In percentage points, reach growth exceeded cost growth by 11 points (-7% + 18% = 11%)."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_unit"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_unit"
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 2,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "As calculated from the retrieved evidence, campaign reach growth exceeded cost growth by 11 percentage points (18% - 7% = 11%)."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 1,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved evidence only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 2,
+        "condition": "no_memory",
+        "kind": "difference",
+        "lessons_used": [],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved document only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "energy_difference",
+        "repeat": 2,
+        "condition": "targeted",
+        "kind": "difference",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "supply.txt"
+          ],
+          "retrieved": {
+            "supply.txt": "Energy supply increased by 5%."
+          },
+          "answer": "Not enough information to calculate the difference in percentage points between demand growth and supply growth. The retrieved evidence only provides information about supply growth, which is 5%."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        },
+        "rescored_evaluation": {
+          "success": false,
+          "evidence_ok": false,
+          "number_ok": false,
+          "unit_ok": false,
+          "answer_ok": false,
+          "failure_type": "missing_evidence"
+        }
+      },
+      {
+        "task_id": "strategy",
+        "repeat": 0,
+        "condition": "targeted",
+        "kind": "strategy",
+        "lessons_used": [
+          "When subtracting percentage growth rates, express the difference in percentage points. Use numerical values present in retrieved evidence; do not claim they are missing without checking."
+        ],
+        "outcome": {
+          "files": [
+            "plans.txt"
+          ],
+          "retrieved": {
+            "plans.txt": "The company plans regional expansion."
+          },
+          "answer": "The company plans regional expansion."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 0,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "As calculated from the retrieved documents, campaign reach growth exceeded cost growth by 11 percentage points (18% - 7% = 11%)."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "marketing_difference",
+        "repeat": 2,
+        "condition": "generic",
+        "kind": "difference",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "reach.txt",
+            "spend.txt"
+          ],
+          "retrieved": {
+            "reach.txt": "Campaign reach increased by 18%.",
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "As calculated from the retrieved documents, campaign reach growth exceeded cost growth by 11 percentage points (18% - 7% = 11%)."
+        },
+        "evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      },
+      {
+        "task_id": "missing_profit",
+        "repeat": 1,
+        "condition": "generic",
+        "kind": "missing",
+        "lessons_used": [
+          "Verify the evidence carefully and provide a complete, accurate answer."
+        ],
+        "outcome": {
+          "files": [
+            "spend.txt"
+          ],
+          "retrieved": {
+            "spend.txt": "Campaign costs increased by 7%."
+          },
+          "answer": "No information available to determine the exact net profit amount. The retrieved evidence only mentions a 7% increase in campaign costs, but does not provide information on revenue or net profit."
+        },
+        "evaluation": {
+          "success": false,
+          "evidence_ok": true,
+          "number_ok": false,
+          "unit_ok": true,
+          "answer_ok": false,
+          "failure_type": "invented_or_unjustified_profit"
+        },
+        "rescored_evaluation": {
+          "success": true,
+          "evidence_ok": true,
+          "number_ok": true,
+          "unit_ok": true,
+          "answer_ok": true,
+          "failure_type": null
+        }
+      }
+    ],
+    "summary": {
+      "no_memory": {
+        "attempts": 18,
+        "successful": 6,
+        "success_rate": 0.3333333333333333
+      },
+      "generic": {
+        "attempts": 18,
+        "successful": 9,
+        "success_rate": 0.5
+      },
+      "targeted": {
+        "attempts": 18,
+        "successful": 9,
+        "success_rate": 0.5
+      }
+    },
+    "paired_changes": {
+      "generic": {
+        "control_pass_treatment_fail": 0,
+        "control_fail_treatment_pass": 3,
+        "control_task_regressions": 0
+      },
+      "targeted": {
+        "control_pass_treatment_fail": 0,
+        "control_fail_treatment_pass": 3,
+        "control_task_regressions": 0
+      }
+    }
+  },
+  "limitations": "Small synthetic benchmark. Success scoring has limited semantic coverage. Results do not prove causality.",
+  "rescored_summary": {
+    "no_memory": {
+      "attempts": 18,
+      "successful": 9,
+      "success_rate": 0.5
+    },
+    "generic": {
+      "attempts": 18,
+      "successful": 12,
+      "success_rate": 0.6666666666666666
+    },
+    "targeted": {
+      "attempts": 18,
+      "successful": 12,
+      "success_rate": 0.6666666666666666
+    }
+  }
+}

@@ -374,10 +374,14 @@ def evaluate(task, outcome):
 
         # Accept common statements of insufficient data.
         absence_pattern = (
-            r"\b(?:not (?:provided|available|stated|given)"
+            r"\b(?:"
+            r"not (?:provided|available|stated|given|specified)"
+            r"|not enough information"
+            r"|no information available"
             r"|cannot (?:determine|calculate)"
             r"|insufficient (?:information|data)"
-            r"|unknown)\b"
+            r"|unknown"
+            r")\b"
         )
 
         invented_profit_pattern = (

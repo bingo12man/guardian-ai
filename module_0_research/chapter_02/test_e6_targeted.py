@@ -147,3 +147,20 @@ def test_conditions_and_negative_transfer():
     assert changes["control_fail_treatment_pass"] == 1
     assert changes["control_pass_treatment_fail"] == 1
     assert changes["control_task_regressions"] == 1
+
+def test_valid_missing_profit_paraphrases():
+    task = TASKS["missing_profit"]
+
+    answers = [
+        "Not specified in the retrieved documents.",
+        "Not enough information to calculate exact net profit amount.",
+        "No information available to determine the exact net profit amount.",
+    ]
+
+    for answer in answers:
+        outcome = {
+            "files": ["spend.txt"],
+            "answer": answer,
+        }
+
+        assert evaluate(task, outcome)["success"] is True
