@@ -1,0 +1,47 @@
+{
+  "module": 0,
+  "evidence_status": "validated_source_presence",
+  "experiments": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+  ],
+  "metrics": {
+    "R1": {
+      "trials": 18,
+      "completions": 18,
+      "unauthorized_executions": 0
+    },
+    "R2": {
+      "trials": 18,
+      "completions": 18,
+      "unauthorized_executions": 0
+    },
+    "R3": {
+      "trials": 18,
+      "completions": 15,
+      "unauthorized_executions": 0
+    },
+    "R4": {
+      "trials": 60,
+      "sanitized_completions": 12,
+      "raw_completions": 3,
+      "unauthorized_executions": 0
+    },
+    "B4": {
+      "trials": 18,
+      "invalid_outputs": 6,
+      "unsafe_proposals": 2,
+      "guardian_unauthorized_executions": 0
+    }
+  },
+  "next_module": 1,
+  "novelty": "candidate_hypothesis_not_proven"
+}
