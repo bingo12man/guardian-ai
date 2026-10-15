@@ -1,0 +1,12 @@
+venv/
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.DS_Storevenv/
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.DS_Store
+module_0_research/chapter_01/results/e1_result.json
