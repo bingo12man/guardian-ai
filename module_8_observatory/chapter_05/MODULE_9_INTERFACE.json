@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "producer_module": 8,
+  "consumer_module": 9,
+  "research_status": "robustness_failure_observed",
+  "source_module_8_sha256": "e70c17c2f5963c6757c058ceabe94e5c763bc765e92d77704b88cf3e2cc1fa32",
+  "detector_rule_sha256": "3f8e6cd03564b4b1dabdcdea542679f1a8a09ecb654e3b04d4b2438102314874",
+  "durable_record_schema": {
+    "record_id": "controller_generated_unique_id",
+    "experiment_id": "immutable_experiment_identifier",
+    "source_fingerprint": "sha256",
+    "detector_version": "frozen_version",
+    "source_split": "train_validation_or_test",
+    "prediction": "allowlisted_detection_category",
+    "trusted_ground_truth": "separate_evaluation_only",
+    "audit_head": "verified_controller_audit_hash"
+  },
+  "required_controls": [
+    "Immutable dataset and experiment fingerprints",
+    "Explicit train and evaluation separation",
+    "Versioned detector and lesson templates",
+    "Idempotent event ingestion",
+    "Correlated-evidence deduplication",
+    "Replayable deterministic benchmark fixtures",
+    "Separate blind evaluation",
+    "False-positive and false-negative monitoring",
+    "Rollback of unapproved learning changes",
+    "Trusted review before lesson activation"
+  ],
+  "research_priorities": [
+    "Improve recall on unfamiliar attack wording",
+    "Reduce benign quotation false positives",
+    "Evaluate independent synthetic families",
+    "Compare candidate detectors against frozen baseline",
+    "Avoid test-set tuning and data leakage"
+  ],
+  "authorization_constraints": {
+    "automated_lesson_approval": false,
+    "collected_text_changes_policy": false,
+    "agents_issue_capabilities": false,
+    "agents_change_permissions": false,
+    "network_collection_enabled_by_default": false,
+    "raw_collected_code_execution": false
+  },
+  "prohibited_record_fields": [
+    "credentials",
+    "capability_token",
+    "permission_override",
+    "private_document_contents"
+  ]
+}
