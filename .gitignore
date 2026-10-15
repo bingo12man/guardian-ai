@@ -1,3 +1,16 @@
+# Generated research results
+module_0_research/**/results/
+
+# Inspect AI evaluation logs
+module_0_research/**/logs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local environment
+.venv/
+venv/
 venv/
 .venv/
 __pycache__/
