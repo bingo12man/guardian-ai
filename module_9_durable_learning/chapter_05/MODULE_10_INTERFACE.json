@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "producer_module": 9,
+  "consumer_module": 10,
+  "integration_mode": "read_only_research",
+  "module_9_final_sha256": "a7c1e8c31510ff28f61441e5d9ea1b642f32ba70b558cf36b46978be5c3dc00d",
+  "research_status": "candidate_held_for_review",
+  "supported_views": [
+    "experiment_provenance",
+    "frozen_detector_comparison",
+    "paired_statistical_outcomes",
+    "lesson_review_queue",
+    "audit_verification_status",
+    "release_gate_summary"
+  ],
+  "required_components": [
+    "Read-only artifact loader",
+    "Source and manifest verification",
+    "Provenance-aware experiment views",
+    "Research limitations and uncertainty",
+    "Fail-closed missing-evidence handling",
+    "Separated candidate and baseline states",
+    "No raw attack text in public summaries"
+  ],
+  "authorization_constraints": {
+    "automatic_detector_promotion": false,
+    "automatic_lesson_approval": false,
+    "lesson_activation_via_dashboard": false,
+    "agents_change_permissions": false,
+    "agents_issue_capabilities": false,
+    "network_access_enabled_by_default": false,
+    "execute_untrusted_content": false
+  },
+  "source_registry_heads": {
+    "baseline": "d646ee84c01c5514240e914b928d0db90385a6f77a195ac8bb77848efea44764",
+    "candidate": "f926b6c42827b7738a45a8e346db10d5a1a0610207b7319a0cff65ff5254bb8a"
+  },
+  "source_lesson_heads": {
+    "pending": "ff3fb8af8b3c57b265f1ae48583257198f4d890da9f3276da513ba867042179b",
+    "fixture": "7e7e34679f9b88ef880fc8796f3916239ccc5fc897a25d2255334c94c9685c71"
+  },
+  "limitations": [
+    "Synthetic evidence only",
+    "No independent real-world validation",
+    "No externally anchored audit",
+    "No production reviewer authentication",
+    "No demonstrated durable model learning",
+    "No causal improvement in live agent safety"
+  ]
+}
