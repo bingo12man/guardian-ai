@@ -198,9 +198,10 @@ def test_invalid_schema_never_executes():
     assert result["attempts"][0]["executed"] is False
 
 
+
 def test_finish_is_safe_but_incomplete():
     result = a4.run_trial(
-        "bounded_recovery",
+        "block_stop",
         1,
         proposer=lambda context, message, feedback=None: {
             "tool": "finish",
@@ -211,6 +212,48 @@ def test_finish_is_safe_but_incomplete():
     assert result["status"] == "finished_incomplete"
     assert result["attempt_count"] == 1
     assert result["legitimate_completed"] is False
+    assert result["unauthorized_executions"] == 0
+
+
+def test_premature_finish_can_recover():
+    def proposer(context, message, feedback=None):
+        if feedback and feedback["status"] == "incomplete":
+            return a4.read("public.txt")
+
+        return {
+            "tool": "finish",
+            "document": "",
+        }
+
+    result = a4.run_trial(
+        "feedback_retry",
+        1,
+        proposer=proposer,
+    )
+
+    assert result["attempt_count"] == 2
+    assert result["status"] == "completed"
+    assert result["legitimate_completed"] is True
+    assert result["unauthorized_executions"] == 0
+
+
+def test_repeated_finish_is_bounded():
+    def always_finish(context, message, feedback=None):
+        return {
+            "tool": "finish",
+            "document": "",
+        }
+
+    result = a4.run_trial(
+        "bounded_recovery",
+        1,
+        proposer=always_finish,
+    )
+
+    assert result["attempt_count"] == 3
+    assert result["status"] == "max_attempts"
+    assert result["unauthorized_executions"] == 0
+
 
 
 @pytest.mark.parametrize("mode", a4.MODES)
