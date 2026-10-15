@@ -1,0 +1,118 @@
+{
+  "endpoint_responses": {
+    "/health": {
+      "status": "ok",
+      "evidence_verified": true,
+      "read_only": true
+    },
+    "/api/v1/overview": {
+      "project": "Guardian AI",
+      "platform_version": "0.1.0",
+      "completed_research_modules": 9,
+      "current_module": 10,
+      "evaluation_status": "FULL_RECORD_ANALYSIS",
+      "frozen_baseline_experiments": 2,
+      "candidate_detector_experiments": 3,
+      "pending_lessons": 8,
+      "active_lessons": 0,
+      "release_decision": "HOLD_FOR_REVIEW",
+      "permission_changes": 0,
+      "research_only": true,
+      "live_guardian_connected": false
+    },
+    "/api/v1/detectors": {
+      "baseline_detector": "m8_rule_detector_v1",
+      "candidate_detector": "guardian_detector_v2_candidate_1",
+      "candidate_status": "CANDIDATE_PENDING",
+      "candidate_promoted": false,
+      "comparison_results": [
+        {
+          "dataset": "original",
+          "examples": 12,
+          "v1_accuracy": 1.0,
+          "v2_accuracy": 0.75,
+          "delta_accuracy_pp": -25.0,
+          "paired_gains": 0,
+          "paired_losses": 3,
+          "exact_p_two_sided": 0.25,
+          "bootstrap_delta_pp_95": [
+            -50.0,
+            0.0
+          ]
+        },
+        {
+          "dataset": "development",
+          "examples": 24,
+          "v1_accuracy": 0.2083,
+          "v2_accuracy": 0.75,
+          "delta_accuracy_pp": 54.17,
+          "paired_gains": 13,
+          "paired_losses": 0,
+          "exact_p_two_sided": 0.000244,
+          "bootstrap_delta_pp_95": [
+            33.33,
+            75.0
+          ]
+        },
+        {
+          "dataset": "fresh",
+          "examples": 12,
+          "v1_accuracy": 0.4167,
+          "v2_accuracy": 0.9167,
+          "delta_accuracy_pp": 50.0,
+          "paired_gains": 6,
+          "paired_losses": 0,
+          "exact_p_two_sided": 0.03125,
+          "bootstrap_delta_pp_95": [
+            25.0,
+            75.0
+          ]
+        }
+      ],
+      "real_world_generalization_established": false
+    },
+    "/api/v1/lessons": {
+      "source": "Module 8 controller-authored candidates",
+      "pending": 8,
+      "approved": 0,
+      "active": 0,
+      "synthetic_fixture_rolled_back": true,
+      "live_guardian_lessons_activated": 0,
+      "review_controls_exposed": false,
+      "lesson_content_exposed": false
+    },
+    "/api/v1/release": {
+      "candidate_status": "CANDIDATE_PENDING",
+      "decision": "HOLD_FOR_REVIEW",
+      "gates_passed": 3,
+      "gates_failed": 6,
+      "baseline_replaced": false,
+      "candidate_promoted": false,
+      "automatic_promotion_allowed": false,
+      "independent_deployment_evidence": false,
+      "real_world_generalization_established": false
+    }
+  },
+  "write_attempts": [
+    {
+      "path": "/api/v1/approve",
+      "status": 404,
+      "accepted": false
+    },
+    {
+      "path": "/api/v1/activate",
+      "status": 404,
+      "accepted": false
+    },
+    {
+      "path": "/api/v1/promote",
+      "status": 404,
+      "accepted": false
+    },
+    {
+      "path": "/api/v1/permissions",
+      "status": 404,
+      "accepted": false
+    }
+  ]
+}

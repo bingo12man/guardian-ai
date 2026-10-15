@@ -1,0 +1,20 @@
+{
+  "module": 10,
+  "chapter": "10.1",
+  "mode": "verified_read_only_fastapi",
+  "get_endpoints_tested": 5,
+  "successful_get_endpoints": 5,
+  "prohibited_write_attempts": 4,
+  "write_attempts_rejected": 4,
+  "verified_evidence": true,
+  "baseline_experiments": 2,
+  "candidate_experiments": 3,
+  "pending_lessons": 8,
+  "active_lessons": 0,
+  "release_decision": "HOLD_FOR_REVIEW",
+  "candidate_promoted": false,
+  "permission_changes": 0,
+  "model_calls": 0,
+  "external_network_requests": 0,
+  "live_guardian_connected": false
+}
