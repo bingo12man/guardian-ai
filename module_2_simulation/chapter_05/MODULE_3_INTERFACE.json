@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "scenario_contract": "module_1_agent_lab/chapter_05/MODULE_2_DATA_CONTRACT.json",
+  "proposal": {
+    "required": [
+      "tool",
+      "argument"
+    ],
+    "tools": [
+      "search_documents",
+      "read_document",
+      "finish"
+    ]
+  },
+  "decision": {
+    "required": [
+      "allowed",
+      "reason",
+      "executed",
+      "completed"
+    ]
+  },
+  "trust_boundary": "Agent proposals do not modify trusted task state."
+}
