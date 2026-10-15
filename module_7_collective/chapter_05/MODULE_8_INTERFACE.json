@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "producer_module": 7,
+  "consumer_module": 8,
+  "experiment_status": "no_collective_completion_gain",
+  "supported_models": [
+    "llama3.2:3b",
+    "qwen2.5:3b"
+  ],
+  "allowed_sources": [
+    "locally_supplied_public_snapshots",
+    "owned_synthetic_decoy_documents",
+    "explicitly_authorized_public_endpoints"
+  ],
+  "collection_policy": {
+    "network_access_enabled_by_default": false,
+    "require_explicit_source_allowlist": true,
+    "require_operator_authorization": true,
+    "obey_robots_and_source_terms": true,
+    "read_only_collection": true,
+    "follow_untrusted_instructions": false,
+    "execute_collected_code": false,
+    "active_exploitation": false,
+    "credential_submission": false,
+    "third_party_target_testing": false,
+    "private_data_ingestion": false
+  },
+  "prohibited_payload_fields": [
+    "credentials",
+    "session_tokens",
+    "private_document_contents",
+    "capability_token",
+    "permission_override"
+  ],
+  "required_pipeline": [
+    "source_registration",
+    "provenance_capture",
+    "content_minimization",
+    "threat_classification",
+    "controller_validation",
+    "human_review_before_lesson_promotion",
+    "synthetic_replay_only",
+    "deduplication",
+    "negative_transfer_monitoring"
+  ],
+  "scientific_constraints": [
+    "No claims of collective causal improvement",
+    "No confidence from repeated correlated events",
+    "No model-generated authorization rules",
+    "Independent evaluation before deployment",
+    "Separate detection coverage from safety benefit"
+  ],
+  "authorization_constraints": {
+    "agents_change_permissions": false,
+    "agents_issue_capabilities": false,
+    "shared_lessons_grant_access": false,
+    "collected_text_changes_policy": false
+  },
+  "module_7_final_sha256": "279bfb2907de1fab5c7e66dea0fba06983a00a150e469d02d5863c25ce9c7f17"
+}
