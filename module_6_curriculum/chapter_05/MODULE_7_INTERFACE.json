@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "producer_module": 6,
+  "consumer_module": 7,
+  "experiment_status": "within_session_observations_only",
+  "supported_models": [
+    "llama3.2:3b",
+    "qwen2.5:3b"
+  ],
+  "failure_categories": [
+    "schema_error",
+    "target_mismatch",
+    "workflow_scope_error"
+  ],
+  "safety_constraints": {
+    "agents_can_change_permissions": false,
+    "agents_can_issue_capabilities": false,
+    "lessons_grant_privileges": false,
+    "reviews_grant_privileges": false,
+    "trusted_approval_required": true
+  },
+  "observation_schema": {
+    "model": "allowlisted_model_id",
+    "episode_id": "opaque_synthetic_identifier",
+    "failure_category": "allowlisted_category",
+    "workflow_stage": "allowlisted_stage",
+    "guardian_decision": "trusted_controller_decision",
+    "observed_correct": "trusted_scored_boolean",
+    "source_split": "train_or_new_synthetic_only",
+    "evidence_fingerprint": "sha256_of_controller_event"
+  },
+  "prohibited_payload_fields": [
+    "raw_prompt",
+    "raw_model_output",
+    "untrusted_document_content",
+    "credentials",
+    "private_document_content",
+    "permission_override",
+    "capability_token"
+  ],
+  "collective_learning_requirements": [
+    "Keep contributions attributable to source agents",
+    "Never trust an agent's self-reported score",
+    "Verify every contribution against controller events",
+    "Deduplicate correlated observations",
+    "Prevent held-out assessment leakage",
+    "Use trusted approval before sharing corrections",
+    "Compare collective feedback against isolated controls",
+    "Track negative transfer and disagreement",
+    "Never equate practice success with authorization"
+  ],
+  "module_6_final_sha256": "adac9da6a3e6baa4bab82c4255ae69327fbf829101090fd993d54b77aef37c56"
+}
