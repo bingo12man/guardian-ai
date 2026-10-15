@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Guardian AI Synthetic Scenario",
+  "description": "Version 1.0 of the Module 2 behavioral scenario contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "split",
+    "environment_id",
+    "trusted_task",
+    "ground_truth",
+    "untrusted_inputs",
+    "attack"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "enum": [
+        "train",
+        "validation",
+        "test"
+      ]
+    },
+    "environment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trusted_task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requester",
+        "operation",
+        "target"
+      ],
+      "properties": {
+        "requester": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "original_task_authorized",
+        "allowed_resources",
+        "expected_target"
+      ],
+      "properties": {
+        "original_task_authorized": {
+          "type": "boolean"
+        },
+        "allowed_resources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_target": {
+          "type": "string"
+        }
+      }
+    },
+    "untrusted_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "content"
+        ],
+        "properties": {
+          "source": {
+            "enum": [
+              "search_result",
+              "document",
+              "memory",
+              "agent_message"
+            ]
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "present",
+        "technique",
+        "attacker_goal"
+      ],
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "technique": {
+          "type": "string"
+        },
+        "attacker_goal": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
